@@ -3,29 +3,33 @@
 
 
 :root{
-    --bg-color:whitesmoke;
+    --bg-color:rgb(244, 240, 240);
     --container-color:white;
+    --menu-color:#333;
     --text-color:black;
     --footer-text:white;
     --footer-bg:#354F52;
+    --icons-color:dodgerblue;
     --box-shadow:0px 0px 30px rgba(0,0,0,0.5);
+    --letter-spacing-animation:1em;
 }
-.theme-switcher i{
-    color:var(--text-color);
-}
-
 [data-theme="dark"]{
-    /* dark grey as background color */
+  --letter-spacing-animation:1em;
   --bg-color:#121212;
   --text-color:white;
   --container-color:#121212;
   --box-shadow:0px 0px 30px rgba(255 , 255, 255, 0.5);
  --footer-text:white;
  --footer-bg:#354F52;
+ --menu-color:whitesmoke;
+}
+.theme-switcher i{
+ color:var(--text-color, whitesmoke);
 }
 html{
     box-sizing:border-box;
-    background-color:var(--bg-color);
+    background-color:var(--bg-color , whitesmoke);
+    scroll-behavior: smooth;
 }
 body{
     margin:0;
@@ -37,8 +41,8 @@ body{
 .theme-switcher{
     position:fixed;
     z-index:100;
-    right:25px;
-    top:30px;
+    right:5px;
+    top:15px;
     cursor:pointer;
     padding:2px;
     color:var(--text-color);
@@ -51,7 +55,7 @@ h1{
 }
 .container{
     margin:20px auto;
-    background-color:var(--container-color);
+    background-color:var(--bg-color);
     width:80%;
     height:90vh;
     padding:20px;
@@ -61,7 +65,7 @@ h1{
 /* animation */
 @keyframes focus-in-contract{
     0% {
-         letter-spacing:1em;
+         letter-spacing:var(--letter-spacing-animation);
          filter:blur(12px);
          opacity:0;
     }
@@ -73,8 +77,8 @@ h1{
 }
 .container-icons{
     text-align:center;
-    position:absolute;
-    top:53%;
+    position:relative;
+    top:30%;
     left:50%;
     transform: translate(-50%,-50%);
     display: inline-block;
@@ -86,7 +90,7 @@ h1{
     transition:transform 0.5s ease;
     flex-direction: row;
     justify-content: space-between;
-    margin:10px;
+    margin:0px 10px;
     font-size:30px;
 }
 .container-icons i:hover{
@@ -96,12 +100,12 @@ h1{
 .container-icons i:active{
     /* font-size:30px; */
     transform:scale(1);
-    color:dodgerblue;
+    color:var(--icons-color);
 }
 
 .main-text{
     font-weight:700;
-     font-size:50px;
+    font-size:clamp(45px,10vw,100px);
     text-align:center;
     font-style:italic;
     position:relative;
@@ -116,12 +120,12 @@ h1{
     position:relative;
     top:100px;
     display:flex;
-    background-color:black;
+    background-color:var(--bg-color);
     overflow:hidden;
     width:60%;
     margin:20px auto;
     padding:20px;
-    height:70vh;
+    height:60vh;
     align-items:center;
     justify-content: center;
     border-radius:10px;
@@ -147,7 +151,7 @@ h1{
 .third-page{
     position:relative;
     color:var(--text-color);
-    top:125px;
+    top:220px;
     height:100vh;
     width:70%;
     margin:200px auto;
@@ -158,8 +162,12 @@ h1{
     text-transform:capitalize;
     font-family:'Outfit', sans-serif;
     font-size:30px;
+    position: relative;
+    top:54px;
+    margin-top:30px;
 }
 .img-container{
+    margin-top:60px;
     display:flex;
     flex-direction:row;
      width:100%;
@@ -192,11 +200,12 @@ h1{
     font-weight:700;
     letter-spacing:2px;
     position:relative;
-    top:-40px;
+    top:40px;
 }
 .blog-item{
     text-align: left;
-    margin:10px 0px;
+    width:70ch;
+    margin:50px 0px;
     padding:0px 20px;
 }
 .blog-item h3{
@@ -251,12 +260,384 @@ h1{
 }
 
 footer .text-footer{
-    text-align:center;
-    position:fixed;
-    bottom:0;
-    padding:4px auto;
-    margin:4px auto;
-    line-height:20px;
-    letter-spacing:1px;
-    width:100%;
+        text-align:center;
+        position:fixed;
+        bottom:0;
+        padding:4px auto;
+        margin:4px auto;
+        line-height:20px;
+        letter-spacing:1px;
+        width:100%;
+
 }
+
+/* navigation menu */
+
+.menu-icon{
+    z-index:10001;
+    position:fixed;
+    top:5px;
+    left:15px;
+    width:2rem;
+    height:2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    cursor:pointer;
+    top:10px;
+    left:10px;
+}
+
+.menu-icon div{
+    height:0.25rem;
+    background-color:var(--text-color);
+    transition:all 0.3s ease-in-out;
+}
+
+/* rotate first bar */
+
+.active .bar1{
+    transform:translateY(0.6rem) rotate(-45deg);
+}
+
+/* fade out the second bar */
+.active .bar2{opacity:0;}
+
+/* rotate the third bar */
+.active .bar3{
+     transform:translateY(-0.75rem) rotate(45deg);
+}
+nav{
+    height:65%;
+    position:fixed;
+    top:0;
+    left:0;
+    transform:translateX(-100%);
+    transition:transform 0.3s ease-in-out;
+    width:200px;
+    z-index:1000;
+    background-color:var(--bg-color);
+}
+
+nav ul{
+    position:relative;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    /* align-items:center; */
+    /* justify-content:space-around; */
+    text-align:center;
+    height:85%;
+    margin-top: 80px;
+    margin-right: 44px;
+    
+   
+}
+nav ul li{
+    display:flex;
+    padding:0;
+    margin:20px  auto;
+    line-height:1.2;
+}
+
+
+nav ul li a{
+    text-decoration:none;
+    font-size:2rem;
+    margin:0px auto;
+    display:block;
+    color:var(--text-color);
+}
+
+a:hover{
+    padding-bottom:2px;
+    border-bottom:2px solid var(--text-color);
+
+}
+
+nav.active{
+    transform:translateX(0);
+}
+.nav-wrapper{
+    height:60px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1;
+    background:var(--bg-color);
+}
+
+
+/* Media Queries -------- */
+
+/* All Mobile Devices */
+
+@media screen and (max-width:1200px){
+    :root{
+        --letter-spacing-animation:.1em;
+    }
+  
+    nav{
+        width:100%;
+        background-color:var(--bg-color);
+    }
+
+    .footer > svg:last-child {
+        border:20px solid #344E41;
+    }
+    .footer svg{
+        bottom:687px;
+    }
+    .footer footer{
+       bottom:687px;
+       left:0;
+       width:100vw;
+    }
+    footer .text-footer{
+        bottom:687px;
+    }
+    .blog-item{
+        width:60ch;
+    }
+    .main-text{
+        top:15vh;
+    }
+    .container{
+        height:63vh;
+    }
+    .container-icons{
+        top:19%;
+    }
+    .second-page{
+        top:40px;
+        height:30vh;
+        width:70%;
+    }
+    .second-page img{
+        object-fit:cover;
+        display:inline-block;
+    }
+
+}
+
+@media screen and (max-width:1000px){
+  :root{
+    --letter-spacing:.1em;
+  }
+   .footer > svg:last-child {
+        border:20px solid #344E41;
+    }
+    .footer svg{
+        bottom:500px;
+    }
+    .footer footer{
+       bottom:500px;
+       left:0;
+       width:100vw;
+    }
+    footer .text-footer{
+        bottom:500px;
+    }
+}
+
+@media screen and (max-width:440px){
+    .theme-switcher{
+        right:170px;
+    }
+    .container-icons {
+        top:22%;
+    }
+    :root{
+        --letter-spacing-animation:.1em;
+
+    }
+    body{
+        overflow-x:hidden;
+    }
+      .footer svg{
+        bottom:250px;
+    }
+    .footer footer{
+        bottom:250px;
+    }
+    .footer .text-footer{
+        bottom:250px;
+        text-align:left;
+    }
+     nav ul{
+        margin-right:170px;
+    }
+     .blog-item p{
+        width:33ch;
+    }
+     .second-page-title h1{
+        font-size:25px;
+        margin-bottom:50px;
+    }
+    footer .footer-text{
+        padding-right:5px;
+    }
+    .nav-wrapper{
+        position:fixed;
+        top:0;
+        left:0;
+    }
+    .blog-container h2{
+        font-size:clamp(20px,2vw,30px);
+    }
+   
+    .blog-item h3{
+        font-size:clamp(16px,1.2vw,24px);
+    }
+}
+
+@media screen and (max-width:420px){
+    :root{
+        --letter-spacing-animation:.1em;
+    }
+    body{
+        overflow-x:hidden;
+        width:100%;
+    }
+    .theme-switcher{
+        position:fixed;
+        right:25px;
+    }
+
+    .container{
+       width:100%;
+       position:relative;
+       top:0;
+       left:70px;
+       
+    }
+
+    .container-icons{
+        top:23%;
+    }
+
+    .second-page{
+        position:relative;
+        width:90%;
+        margin:20px auto;
+        left:55px;
+    }
+    .second-page-title{
+        margin-top:30vh;
+        position:relative;
+        left:30px;
+        top:94px;
+        width:100%;
+        margin:20px auto;
+    }
+    .second-page-title h1{
+        font-size:25px;
+        margin-bottom:50px;
+    }
+    .blog-container{
+        top:-290px;
+        margin:10px auto;
+        padding:10px;
+        width:100%;
+        height:80%;
+        margin-left:60px;
+    }
+    .blog-item{
+        top:-20px;
+        height:20%;
+    }
+    .blog-item h3{
+        margin:10px;
+    }
+    .blog-item p{
+        width:35ch;
+    }
+    .footer svg{
+        bottom:310px;
+        width:100%;
+    }
+    .footer{
+        height:100vh;
+        width:100%;
+    }
+    .footer footer{
+        bottom:333px;
+        left:13%;
+    }
+    .footer .text-footer{
+        bottom:333px;
+    }
+    nav ul{
+        margin-right:170px;
+    }
+
+    .third-page h2{
+        top:75px;
+        width:100%;
+        left:35px;
+        text-align:center;
+        font-size:clamp(24px,2vw,30px);
+    }
+
+    .img-container{
+        margin-top:200px;
+        margin-left:18%;
+    }
+    .third-page img{
+        width:25%;
+    }
+
+    .footer{
+        left:17%;
+        width:100vw;
+    }
+
+    .footer h2 a{
+       top:-30px;
+       margin-top:50px;
+    }
+}
+
+@media screen and (min-width:700px) and (max-width:940px){
+
+    .theme-switcher{
+        right:25px;
+    }
+    .container{
+        height:85vh;
+    }
+    .container-icons{
+        top:5%;
+    }
+    .main-text{
+        top:5vh;
+    }
+    nav {
+        height:100%;
+    }
+    nav ul{
+        margin-top:25px;
+    }
+    .img-container img{
+        width:25%;
+    }
+    .title-fourth-page{
+        top:19px;
+    }
+    .blog-item{
+        margin:30px 0px;
+    }
+    .footer h2 a{
+        bottom:-30px;
+    }
+    .footer svg{
+        bottom:0;
+    }
+    .footer footer{
+        bottom:0;
+    }
+    .footer  .text-footer{
+        bottom:0px;
+    }
+} 

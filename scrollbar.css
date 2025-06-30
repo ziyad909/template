@@ -1,0 +1,22 @@
+/* custom scroll bar */
+
+::-webkit-scrollbar{
+    width:5px;
+}
+/* Track  */
+::-webkit-scrollbar-track{
+ background-color:none;
+}
+/* handle  */
+
+::-webkit-scrollbar-thumb{
+     background-color:rgb(152, 146, 146);
+     border-radius:5px;
+     min-height:40px;
+}
+
+/* handle on hover */
+
+::-webkit-scrollbar-thumb:hover{
+    background-color:grey;
+}

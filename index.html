@@ -11,14 +11,32 @@
     <script src="https://kit.fontawesome.com/57e7d2f096.js" crossorigin="anonymous"></script>
     <!--style -->
     <link rel="stylesheet" href="style.css">
+    <!-- styled scroll bar link -->
+     <link rel="stylesheet" href="scrollbar.css">
 </head>
 <body>
   <main>
+            <div class="nav-wrapper">
+                  <div class="menu-icon" onclick="toggleMenu()">
+                  <div class="bar1"></div>
+                  <div class="bar2"></div>
+                  <div class="bar3"></div>
+               </div>
+                  <nav id="nav">
+                     <ul>
+                        <li><a href="#section-1" onclick="hideMenu()">Home</a></li>
+                        <li><a href="#section-2" onclick="hideMenu()">About</a></li>
+                        <li><a href="#section-3" onclick="hideMenu()">Gallery</a></li>
+                        <li><a href="#section-4" onclick="hideMenu()">Blog</a></li>
+                        <li><a href="#section-5" onclick="hideMenu()">Contact</a></li>
+                     </ul>
+                  </nav>
+            </div>
    <div class="theme-switcher" id="theme-switcher">
      <span class="toggle-text">Light Mode</span>
      <i class="fas fa-sun"></i>
    </div>
-  <div class="container">
+  <div class="container" id="section-1">
   <h1 class="main-text">Typographix</h1>
   <div class="container-icons">
     <i class="fa-brands fa-instagram" title ="Instagram"></i>
@@ -28,15 +46,15 @@
     <i class="fa-brands fa-facebook" title="Facebook"></i>
   </div>
 </div>
- <div class="second-page-title">
-    <h1>The Second Page</h1>
+ <div class="second-page-title" id="section-2">
+   <center> <h1>The Second Page</h1></center>
  </div>
 <div class="second-page">
  
       <img src="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Workspace image">
  </div>
 
- <div class="third-page">
+ <div class="third-page" id="section-3">
     <h2>Gallery (coming soon)</h2>
     <div class="img-container">
        <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA" alt="Keyboard lightning">
@@ -45,13 +63,13 @@
     </div>
  </div>
 
- <div class="blog-container">
+ <div class="blog-container" id="section-4">
     <h2 class="title-fourth-page">
        Blog Updates (Coming Soon)
     </h2>
     <div class="blog-item">
        <h3>blog item 1 here</h3>
-       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In illum, asperiores repudiandae eaque non repellendus quia numquam quae, architecto, nostrum adipisci. Quaerat dolorem doloribus dignissimos fugiat odit labore blanditiis quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi placeat quos accusantium eos et! Atque tempora, accusantium esse vero expedita earum id amet accusamus. Harum id voluptas assumenda saepe eum?</p>
+       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In illum, asperiores repudiandae eaque non repellendus quia numquam quae, architecto, nostrum adipisci. Quaerat dolorem doloribus dignissimos fugiat amet accusamus. Harum id voluptas assumenda saepe eum?</p>
     </div>
     <div class="blog-item">
       <h3>blog item 2 here</h3>
@@ -60,12 +78,12 @@
     </div>
     <div class="blog-item">
       <h3>blog item 3 here</h3>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In illum, asperiores repudiandae eaque non repellendus quia numquam quae, architecto, nostrum adipisci. Quaerat dolorem doloribus dignissimos fugiat odit labore blanditiis quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi placeat quos accusantium eos et! Atque tempora, accusantium esse vero expedita earum id amet accusamus. Harum id voluptas assumenda saepe eum?</p>
+      <p> consectetur adipisicing elit. In illum, asperiores repudiandae eaque non repellendus quia numquam quae, architecto, nostrum adipisci. Quaerat dold amet accusamus. Harum id voluptas assumenda saepe eum?</p>
     </div>
 
  </div>
 
- <div class="footer">
+ <div class="footer" id="section-5">
     <h2 class ="contact-link"><a href="/">Contact Us</a></h2>
 
    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#52796f" fill-opacity="1" d="M0,320L48,288C96,256,192,192,288,149.3C384,107,480,85,576,101.3C672,117,768,171,864,197.3C960,224,1056,224,1152,234.7C1248,245,1344,267,1392,277.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
